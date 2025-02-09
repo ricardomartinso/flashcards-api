@@ -3,7 +3,7 @@ spring:
     name: flashcards-api
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:33060/flashcard-database
+    url: jdbc:mysql://mysql:3306/flashcard-database
     username: root
     password: root
   jpa:
@@ -15,7 +15,7 @@ spring:
     baseline-on-migrate: true
     user: root
     password: root
-    url: jdbc:mysql://localhost:33060/flashcard-database
+    url: jdbc:mysql://mysql:3306/flashcard-database
     locations: classpath:db/migration
     baseline-version: 0
     validate-on-migrate: true
