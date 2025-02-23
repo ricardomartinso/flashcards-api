@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `tab_user` (
   `username` VARCHAR(255) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL UNIQUE,
-  `created_at` TIMESTAMP NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `tab_deck` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NULL,
-  `created_at` TIMESTAMP NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL,
   `user_id` INT NOT NULL,
   `parent_deck_id` INT NULL,
@@ -33,9 +33,9 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `tab_flashcard` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `question` VARCHAR(255) NOT NULL,
-  `answer` VARCHAR(255) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL,
+  `question` TEXT NOT NULL,
+  `answer` TEXT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NULL,
   `deck_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `tab_flashcard_study` (
     `attempts` INT NOT NULL,
     `user_id` INT NOT NULL,
     `flashcard_id` INT NOT NULL,
-    `created_at` TIMESTAMP NOT NULL,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     INDEX `fk_tab_flashcard_study_tab_flashcard1_idx` (`flashcard_id` ASC) VISIBLE,
     INDEX `fk_tab_flashcard_study_tab_user1_idx` (`user_id` ASC) VISIBLE,
